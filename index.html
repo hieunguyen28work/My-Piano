@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>My Piano</h1>
+    <ul class="piano">
+      <li class="key white c" data-key="65"></li>
+      <li class="key black cs" data-key="87"></li>
+      <li class="key white d" data-key="83"></li>
+      <li class="key black ds" data-key="69"></li>
+      <li class="key white e" data-key="68"></li>
+      <li class="key white f" data-key="70"></li>
+      <li class="key black fs" data-key="84"></li>
+      <li class="key white g" data-key="71"></li>
+      <li class="key black gs" data-key="89"></li>
+      <li class="key white a" data-key="72"></li>
+      <li class="key black as" data-key="85"></li>
+      <li class="key white b" data-key="74"></li>
+
+      <li class="key white c" data-key="75"></li>
+      <li class="key black cs" data-key="79"></li>
+      <li class="key white d" data-key="76"></li>
+      <li class="key black ds" data-key="80"></li>
+      <li class="key white e" data-key="186"></li>
+      <li class="key white f" data-key="222"></li>
+      <li class="key black fs" data-key="221"></li>
+      <li class="key white g" data-key="49"></li>
+      <li class="key black gs" data-key="50"></li>
+      <li class="key white a" data-key="51"></li>
+      <li class="key black as" data-key="52"></li>
+      <li class="key white b" data-key="53"></li>
+
+
+    </ul>
+  </div>
+    <audio src="piano-mp3/C4.mp3" data-key="65"></audio>
+    <audio src="piano-mp3/Db4.mp3" data-key="87"></audio>
+    <audio src="piano-mp3/D4.mp3" data-key="83"></audio>
+    <audio src="piano-mp3/Eb4.mp3" data-key="69"></audio>
+    <audio src="piano-mp3/E4.mp3" data-key="68"></audio>
+    <audio src="piano-mp3/F4.mp3" data-key="70"></audio>
+    <audio src="piano-mp3/Gb4.mp3" data-key="84"></audio>
+    <audio src="piano-mp3/G4.mp3" data-key="71"></audio>
+    <audio src="piano-mp3/Ab4.mp3" data-key="89"></audio>
+    <audio src="piano-mp3/A4.mp3" data-key="72"></audio>
+    <audio src="piano-mp3/Bb4.mp3" data-key="85"></audio>
+    <audio src="piano-mp3/B4.mp3" data-key="74"></audio>
+
+    <audio src="piano-mp3/C5.mp3" data-key="75"></audio>
+    <audio src="piano-mp3/Db5.mp3" data-key="79"></audio>
+    <audio src="piano-mp3/D5.mp3" data-key="76"></audio>
+    <audio src="piano-mp3/Eb5.mp3" data-key="80"></audio>
+    <audio src="piano-mp3/E5.mp3" data-key="186"></audio>
+    <audio src="piano-mp3/F5.mp3" data-key="222"></audio>
+    <audio src="piano-mp3/Gb5.mp3" data-key="221"></audio>
+    <audio src="piano-mp3/G5.mp3" data-key="49"></audio>
+    <audio src="piano-mp3/Ab5.mp3" data-key="50"></audio>
+    <audio src="piano-mp3/A5.mp3" data-key="51"></audio>
+    <audio src="piano-mp3/Bb5.mp3" data-key="52"></audio>
+    <audio src="piano-mp3/B5.mp3" data-key="53"></audio>
+  <div>
+
+
+  </div>
+
+  <script>
+    window.addEventListener('keydown', (e) =>{
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+
+      if (key) {
+        if(key.classList.contains('white')){
+          key.classList.add('whiteDown')
+        }else{
+          key.classList.add('blackDown')
+        }
+        if(audio){
+          audio.currentTime= 0;
+          audio.play();
+        };
+
+        window.addEventListener('keyup',() => {
+            key.classList.remove('whiteDown','blackDown')
+        })
+      }
+    })
+  </script>
+</body>
+</html>
